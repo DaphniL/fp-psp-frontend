@@ -12,9 +12,13 @@ import FeedItem from './activities/item/view';
 
 export default Mn.View.extend({
   template: Template,
-
+  events: {
+    'click #menu-right': 'nextPageActivity',
+    'click #menu-left': 'previousPageActivity'
+  },
   initialize(options) {
     this.app = options.app;
+    this.collection;
 
     if (this.model) {
       this.organization = this.model.attributes;
@@ -32,6 +36,58 @@ export default Mn.View.extend({
     }
   },
 
+  nextPageActivity(){
+    if (this.collection.currentPage < this.collection.totalPages) {
+      let params ={};
+      params.page = this.collection.currentPage + 1;
+      this.activities.fetch({
+        data: params,
+        success: (collection, response) => {
+          const activityFeed = this.$el.find('#activity-feed-admin');
+          activityFeed.empty();
+
+          this.collection = collection;
+
+          this.collection.reset(response.list);
+          this.collection.currentPage = response.currentPage;
+          this.collection.totalPages = response.totalPages;
+
+          this.collection.each(model => {
+            const item = new FeedItem({ model });
+            activityFeed.append(item.render().el);
+          });
+
+        }
+      });
+    }
+  },
+
+  previousPageActivity(){
+    if (this.collection.currentPage > 0) {
+      let params ={};
+      params.page = this.collection.currentPage - 1;
+      this.activities.fetch({
+        data: params,
+        success: (collection, response) => {
+          const activityFeed = this.$el.find('#activity-feed-admin');
+          activityFeed.empty();
+
+          this.collection = collection;
+
+          this.collection.reset(response.list);
+          this.collection.currentPage = response.currentPage;
+          this.collection.totalPages = response.totalPages;
+
+          this.collection.each(model => {
+            const item = new FeedItem({ model });
+            activityFeed.append(item.render().el);
+          });
+
+        }
+      });
+    }
+  },
+
   onRender() {
     if (this.model.get('id')) {
       this.app.updateSubHeader(storage.getSubHeaderItems(this.model));
@@ -42,13 +98,21 @@ export default Mn.View.extend({
   renderFeed() {
     this.activities = new ActivityFeed();
     this.activities.fetch({
-      success: () => {
+      success: (collection, response) => {
         const activityFeed = this.$el.find('#activity-feed-admin');
         activityFeed.empty();
-        this.activities.each(model => {
+
+        this.collection = collection;
+
+        this.collection.reset(response.list);
+        this.collection.currentPage = response.currentPage;
+        this.collection.totalPages = response.totalPages;
+
+        this.collection.each(model => {
           const item = new FeedItem({ model });
           activityFeed.append(item.render().el);
         });
+
       }
     });
   },

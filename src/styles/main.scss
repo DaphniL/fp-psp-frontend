@@ -467,6 +467,19 @@ div.fp-form-container {
     60% 8px;
   background-size: 20px;
 }
+
+.menu-right {
+  background: url('/static/images/icon_select_on.png') no-repeat scroll 50% 6px;
+  background-size: 20px;
+  transform: rotate(270deg);
+}
+
+.menu-left {
+  background: url('/static/images/icon_select_on.png') no-repeat scroll 50% 6px;
+  background-size: 20px;
+  transform: rotate(90deg);
+}
+
 .card-menu-delete {
   background: url('/static/images/icon_eliminar_encuesta.png') no-repeat scroll
     40% 8px;
