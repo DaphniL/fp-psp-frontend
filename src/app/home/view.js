@@ -19,6 +19,9 @@ export default Mn.View.extend({
   initialize(options) {
     this.app = options.app;
     this.collection;
+    this.activityParams = {};
+    this.activityParams.size = 10;
+    this.activityParams.page = 0;
 
     if (this.model) {
       this.organization = this.model.attributes;
@@ -37,11 +40,10 @@ export default Mn.View.extend({
   },
 
   nextPageActivity(){
-    if (this.collection.currentPage < this.collection.totalPages) {
-      let params ={};
-      params.page = this.collection.currentPage + 1;
+    if (this.activityParams.page + 1 < this.collection.totalPages) {
+      this.activityParams.page ++;
       this.activities.fetch({
-        data: params,
+        data: this.activityParams,
         success: (collection, response) => {
           const activityFeed = this.$el.find('#activity-feed-admin');
           activityFeed.empty();
@@ -63,11 +65,10 @@ export default Mn.View.extend({
   },
 
   previousPageActivity(){
-    if (this.collection.currentPage > 0) {
-      let params ={};
-      params.page = this.collection.currentPage - 1;
+    if (this.activityParams.page -1 > 0) {
+      this.activityParams.page --;
       this.activities.fetch({
-        data: params,
+        data: this.activityParams,
         success: (collection, response) => {
           const activityFeed = this.$el.find('#activity-feed-admin');
           activityFeed.empty();
@@ -98,6 +99,7 @@ export default Mn.View.extend({
   renderFeed() {
     this.activities = new ActivityFeed();
     this.activities.fetch({
+      data: this.activityParams,
       success: (collection, response) => {
         const activityFeed = this.$el.find('#activity-feed-admin');
         activityFeed.empty();
