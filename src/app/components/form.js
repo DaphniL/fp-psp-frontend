@@ -12,7 +12,6 @@ const log = type => console.log.bind(console, type);
 class Form extends Component {
   constructor(props) {
     super(props);
-
     let order = props.uiSchema['ui:order'];
     let stepsSchema = [];
     let stepsUISchema = [];
@@ -189,6 +188,7 @@ class Form extends Component {
       if (this.props.reAnswer) uischemaToRet[key] = { 'ui:readonly': true };
     }
 
+    // console.log({ uischemaToRet });
     return uischemaToRet;
   }
 
@@ -237,6 +237,7 @@ class Form extends Component {
         this.counter.countPersonal
       }/`;
     }
+
     return schemaToRet;
   }
 

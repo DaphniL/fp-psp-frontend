@@ -14,6 +14,7 @@ import SurveyModel from '../../surveys/add/model';
 import SnapshotModel from './model';
 import SnapshotDraftModel from '../../snapshots_drafts/model';
 import FlashesService from '../../flashes/service';
+import { getLocalizedSchema } from '../../utils/survey_ui_helper';
 
 export default Mn.View.extend({
   template: Template,
@@ -24,7 +25,16 @@ export default Mn.View.extend({
   },
 
   initialize(options) {
-    const { organizationId, surveyId, handleCancel, app, stateDraft, snapshotDraftId, reAnswer, formData } = options;
+    const {
+      organizationId,
+      surveyId,
+      handleCancel,
+      app,
+      stateDraft,
+      snapshotDraftId,
+      reAnswer,
+      formData
+    } = options;
 
     this.surveyModel = new SurveyModel({ id: surveyId });
     this.surveyModel.on('sync', () => this.renderForm());
@@ -41,23 +51,6 @@ export default Mn.View.extend({
     this.app = app;
   },
 
-  getLocalizedSchema(unlocalizedSchema) {
-    const newSchema = Object.assign({}, unlocalizedSchema);
-
-    const newProps = _.mapValues(newSchema.properties, obj =>
-      _.mapValues(obj, obj2 => {
-        if (_.isObject(obj2) && obj2.hasOwnProperty('es')) {
-          return obj2.es;
-        } else if (_.isObject(obj2) && obj2.hasOwnProperty('en')) {
-          return obj2.en;
-        }
-        return obj2;
-      })
-    );
-    newSchema.properties = newProps;
-    return newSchema;
-  },
-
   renderForm() {
     const parameters = {};
     parameters.survey_id = this.surveyModel.id;
@@ -67,7 +60,7 @@ export default Mn.View.extend({
 
     const placeHolder = this.$el.find('#new-survey')[0];
     const { survey_schema } = this.surveyModel.attributes;
-    const localizedSchema = this.getLocalizedSchema(survey_schema);
+    const localizedSchema = getLocalizedSchema(survey_schema);
     const uiSchema = this.surveyModel.attributes.survey_ui_schema;
 
     this.reactView = React.createElement(Form, {
@@ -142,47 +135,48 @@ export default Mn.View.extend({
       user_name: this.app.getSession().get('user').username,
       term_cond_id: this.app.getSession().get('termCond'),
       priv_pol_id: this.app.getSession().get('priv'),
-      dependencies : formResult.dependencies
+      dependencies: formResult.dependencies
     };
 
-
     new SnapshotModel().save(snapshot).then(savedSnapshot => {
-
-      if(draftId){
+      if (draftId) {
         let snapshotDraftModel = new SnapshotDraftModel();
         snapshotDraftModel.set('id', draftId);
         snapshotDraftModel.destroy().then(
           () => {
-            this.redirectSummary(savedSnapshot.survey_id, savedSnapshot.snapshot_economic_id);
+            this.redirectSummary(
+              savedSnapshot.survey_id,
+              savedSnapshot.snapshot_economic_id
+            );
           },
 
           error => {
             FlashesService.request('add', {
               timeout: 2000,
               type: 'warning',
-               title: error.responseJSON.message
+              title: error.responseJSON.message
             });
           }
-
         );
       } else {
-        this.redirectSummary(savedSnapshot.survey_id, savedSnapshot.snapshot_economic_id);
+        this.redirectSummary(
+          savedSnapshot.survey_id,
+          savedSnapshot.snapshot_economic_id
+        );
       }
     });
 
-    this.app.getSession().save({termCond: 0, priv: 0});
+    this.app.getSession().save({ termCond: 0, priv: 0 });
   },
 
-  redirectSummary(surveyId, snapshotEconomicId){
+  redirectSummary(surveyId, snapshotEconomicId) {
     Bn.history.navigate(
-      `/survey/${surveyId}/snapshot/${
-        snapshotEconomicId
-      }`,
+      `/survey/${surveyId}/snapshot/${snapshotEconomicId}`,
       true
     );
   },
 
-  handleSaveDraft(state){
+  handleSaveDraft(state) {
     let snapshotDraftModel = new SnapshotDraftModel();
     let url = `/surveys`;
 
@@ -194,17 +188,15 @@ export default Mn.View.extend({
       term_cond_id: this.app.getSession().get('termCond'),
       priv_pol_id: this.app.getSession().get('priv'),
       state_draft: state
-    }
+    };
 
-    if(this.props.snapshotDraftId){
+    if (this.props.snapshotDraftId) {
       snapshotDraftModel.set('id', this.props.snapshotDraftId);
       url = `/surveys/drafts`;
     }
 
     snapshotDraftModel.save(snapshot).then(
-
       () => {
-
         FlashesService.request('add', {
           timeout: 2000,
           type: 'info',
@@ -217,7 +209,7 @@ export default Mn.View.extend({
         FlashesService.request('add', {
           timeout: 2000,
           type: 'warning',
-           title: error.responseJSON.message
+          title: error.responseJSON.message
         });
       }
     );
