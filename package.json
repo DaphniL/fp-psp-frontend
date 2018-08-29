@@ -107,6 +107,7 @@
     "react-gmaps": "^1.7.0",
     "react-google-maps": "^9.4.5",
     "react-jsonschema-form": "^0.50.1",
+    "react-stepzilla": "^4.7.2",
     "select2": "^4.0.6-rc.1"
   },
   "lint-staged": {
