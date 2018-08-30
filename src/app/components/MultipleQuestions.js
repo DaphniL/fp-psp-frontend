@@ -2,24 +2,36 @@ import React, { Component } from 'react';
 import JsonSchemaForm from 'react-jsonschema-form';
 import { getLocalizedSchema } from '../utils/survey_ui_helper';
 
+// Third party library that will allow
+// to show a 'wizard' like UI, with
+// Next,Previous buttons for each set of questions
+// per family member.
+// It will also show a progress bar on top
+// with a number per step or set of questions.
+// https://github.com/newbreedofgeek/react-stepzilla
 var StepZilla = require('react-stepzilla').default;
 
 export default class MultipleQuestions extends Component {
   constructor(args) {
     super(args);
+
     this.handleSingleFieldClick = this.handleSingleFieldClick.bind(this);
+    this.updateSteps = this.updateSteps.bind(this);
 
     const localizedSchema = getLocalizedSchema(this.props.schema);
     const stepSchema = this.getStepSchema(localizedSchema);
 
     this.state = {
+      // The schema representing the number of
+      // family members input single input field
       singleSchema: this.getSingleSchema(localizedSchema),
 
       stepSchema: this.getStepSchema(localizedSchema),
-      // by default on question per family member
+      // by default one set of questions per family member
+      // the set of questions are represented by 'stepSchema'
       steps: [
         {
-          name: '1',
+          name: '1', // the sequence number on the progess bar
           component: <JsonSchemaForm schema={stepSchema} />
         }
       ]
@@ -44,18 +56,20 @@ export default class MultipleQuestions extends Component {
     return getLocalizedSchema(newSchema.properties[0].items);
   }
 
-  _hasOwnProperty(obj, key) {
-    return Object.prototype.hasOwnProperty.call(obj, key);
-  }
-
   handleSingleFieldClick(e) {
     e.preventDefault();
+
     // number of family members
     const singleFieldNumber = this.singleField.value;
     if (singleFieldNumber < 2) {
       return null;
     }
-    this.setState(() => {
+
+    this.setState(this.updateSteps(singleFieldNumber));
+  }
+
+  updateSteps(singleFieldNumber) {
+    return () => {
       const newSteps = [];
       for (let i = 0; i < singleFieldNumber; i++) {
         // add one sub-form per family member
@@ -65,8 +79,9 @@ export default class MultipleQuestions extends Component {
         });
       }
       return { steps: newSteps };
-    });
+    };
   }
+
   render() {
     const { singleSchema, steps } = this.state;
     return (
