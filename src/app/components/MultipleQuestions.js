@@ -1,3 +1,18 @@
+/**
+ * TODO to complete the behaviour of this component:
+ * 1. [] Hide te submit button for each step.
+ * 2. [] When clicking next/previous go to the next/previous step.
+ *  Now goes to the next question in the parent survey
+ * 3. [] When updating the number of families, the progess on top of the
+ * steps are not rendering well, there is an issue with the CSS (maybe)
+ * 4. [] When clicking the arrow to go to the next question in the parent
+ * survey, verify that the formData is filled correctly with the excpected
+ * json for the backend. Maybe this will take some manual implementation in
+ * order to fill the formData with the expected values.
+ * The expected JSON for formData is documented in a google docs:
+ * https://docs.google.com/document/d/1hwO54jujbF485tzWMRmYXo2hqY28ashFvX_ybyTKxbs/edit?ts=5b7d9a60
+ */
+
 import React, { Component } from 'react';
 import JsonSchemaForm from 'react-jsonschema-form';
 import { getLocalizedSchema } from '../utils/survey_ui_helper';
@@ -32,6 +47,9 @@ export default class MultipleQuestions extends Component {
       steps: [
         {
           name: '1', // the sequence number on the progess bar
+          // TODO This shows a warning on the console
+          // due to having a form inside a form
+          // Should be corrected
           component: <JsonSchemaForm schema={stepSchema} />
         }
       ]
