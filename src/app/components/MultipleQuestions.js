@@ -1,16 +1,35 @@
 /**
  * TODO to complete the behaviour of this component:
  * 1. [] Hide te submit button for each step.
+ *
  * 2. [] When clicking next/previous go to the next/previous step.
  *  Now goes to the next question in the parent survey
+ *
  * 3. [] When updating the number of families, the progess on top of the
  * steps are not rendering well, there is an issue with the CSS (maybe)
+ *
  * 4. [] When clicking the arrow to go to the next question in the parent
  * survey, verify that the formData is filled correctly with the excpected
  * json for the backend. Maybe this will take some manual implementation in
  * order to fill the formData with the expected values.
  * The expected JSON for formData is documented in a google docs:
  * https://docs.google.com/document/d/1hwO54jujbF485tzWMRmYXo2hqY28ashFvX_ybyTKxbs/edit?ts=5b7d9a60
+ *
+ * 5. [] To make this component generic enough, the behaviour of 'handleSingleFieldChange''
+ * should be somewhat based on what is inside the conditions, in the uiSchema, so that we
+ * can support several direfent conditions to show multiple questions.
+ * Or maybe this is not necessary 🤔
+ *  "ui:custom:fields" : {
+ *     "questionsPerFamilyMember": {
+ *       "ui:field": "multipleQuestions",
+ *       "conditions": {
+ *         "questionsPerFamilyMember": {
+ *           "questions": {
+ *             "minItems": "numberOfFamilyMembers"
+ *           }
+ *         }
+ *       }
+ *     }
  */
 
 import React, { Component } from 'react';
