@@ -21,7 +21,7 @@ export default Mn.View.extend({
       date_to: '',
       family_id: '',
       application_id: '',
-      organizations: [],
+      organizations: '',
       survey_id: ''
     };
   },
@@ -107,7 +107,8 @@ export default Mn.View.extend({
       organizationArray.push(this.app.getSession().get('user').organization.id);
     }
 
-    this.filters.organizations = organizationArray;
+    this.filters.organizations = organizationArray.join();
+    console.log(this.filters.organizations)
     this.filters.application_id = this.app.getSession().get('user').application
       ? this.app.getSession().get('user').application.id
       : '';
