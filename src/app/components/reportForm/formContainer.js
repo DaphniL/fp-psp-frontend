@@ -402,7 +402,7 @@ export default class FormContainer extends React.Component {
         <hr />
 
 
-        <label>{t('report.snapshot.Socioeconomic-Status')}</label>
+        <label><h3>{t('report.snapshot.Socioeconomic-Status')}</h3></label>
         <Economics
           economics={economics}
           selectedEconomics={selectedEconomics}
@@ -415,14 +415,14 @@ export default class FormContainer extends React.Component {
         <hr />
 
         <div>
-          <label>{t('report.snapshot.match-filters.Title')}</label>
+          <label><h3>{t('report.snapshot.match-filters.Title')}</h3></label>
           <select value={match} onChange={this.changeMatch}>
             <option value="ALL">{t('report.snapshot.match-filters.All')}</option>
             <option value="ANY">{t('report.snapshot.match-filters.Any')}</option>
           </select>
         </div>
         <hr />
-        <label>{t('report.snapshot.Indicators')}</label>
+        <label><h3>{t('report.snapshot.Indicators')}</h3></label>
         <Indicators
           indicators={indicators}
           selectedIndicators={selectedIndicators}
