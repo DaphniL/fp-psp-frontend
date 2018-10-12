@@ -1937,8 +1937,13 @@ img.current-language-flag {
 .report-tag {
   background-color: rgba(204, 204, 204, 1);
   margin-right: 10px;
-  border-radius: 2px;
-  padding: 0 10px;
+  border-radius: 5px;
+  padding: 2px 10px;
+  font-size: 0.8em;
+
+  @media screen and (max-width: 480px) {
+    font-size: 0.6em;
+  }
 }
 
 .report-tag-deselect {
