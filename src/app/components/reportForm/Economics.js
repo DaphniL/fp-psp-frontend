@@ -6,7 +6,7 @@ export default props => (
   <div>
     {props.economics.map(item => (
       <div key={item.name} className="row">
-        <div className="col-xs-2">
+        <div className="col-md-3">
           <label>
             <input
               type="checkbox"
@@ -22,7 +22,7 @@ export default props => (
             {camelCasetoWords(item.name)}
           </label>
         </div>
-        <div className="col-xs-10">
+        <div className="col-md-9">
           {Object.keys(props.selectedEconomics).includes(item.name) && (
             <div>
               {item.enum ? (

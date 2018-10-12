@@ -1901,7 +1901,7 @@ img.current-language-flag {
 
 .report-form {
   label {
-    padding: 10px 0;
+    padding-top: 10px 0 0 0;
   }
 
   ul {
@@ -1959,4 +1959,12 @@ img.current-language-flag {
     margin: 0;
     font-size: 15px !important;
   }
+}
+// add arrow caret for multiselect
+.report-taglist::after {
+  content: '▼';
+  font-size: 0.7em;
+  float: right;
+  right: 30px;
+  position: absolute;
 }

@@ -343,61 +343,64 @@ export default class FormContainer extends React.Component {
 
     return (
       <div className="report-form">
-        <label>{t('report.snapshot.Survey')}</label>
-        <select
-          className="map-select"
-          onChange={e => this.selectSurvey(e.target.value)}
-        >
-          {this.getSurveys(this.props.surveyData).map(item => (
-            <option key={item}>{item}</option>
+        <div className="row">
+          <div className="col-lg-6">
+            <label><h3>{t('report.snapshot.Survey')}</h3></label>
+            <select
+              className="map-select"
+              onChange={e => this.selectSurvey(e.target.value)}
+            >
+              {this.getSurveys(this.props.surveyData).map(item => (
+                <option key={item}>{item}</option>
           ))}
-        </select>
+            </select>
+
+            {this.session.getUserRole() === 'ROLE_ROOT' && (
+            <div>
+              <label><h3>{t('report.snapshot.Hubs')}</h3></label>
+              <SelectWithTags
+                items={applications.filter(
+                  item => !selectedApplications.includes(item)
+                )}
+                selectedItems={selectedApplications}
+                selectMethod={this.selectApplication}
+                deselectMethod={this.deselectApplication}
+              />
+            </div>
+          )}
+
+            {(this.session.getUserRole() === 'ROLE_ROOT' ||
+            this.session.getUserRole() === 'ROLE_HUB_ADMIN') && (
+            <div>
+              <label><h3>{t('report.snapshot.Organizations')}</h3></label>
+              <SelectWithTags
+                items={organizations
+                  .filter(
+                    item =>
+                      selectedApplications.length
+                        ? selectedApplications
+                            .map(app => app.name)
+                            .includes(item.application.name)
+                        : item
+                  )
+                  .filter(item => !selectedOrganizations.includes(item))}
+                selectedItems={selectedOrganizations}
+                selectMethod={this.selectOrganization}
+                deselectMethod={this.deselectOrganization}
+              />
+            </div>
+          )}
+          </div>
+          <div className="col-lg-5 col-lg-offset-1">
+            <label><h3>{t('report.snapshot.time-period.Title')}</h3></label>
+            <TimePeriod
+              selectPeriod={this.selectPeriod}
+              toggleMultipleSnapshots={this.toggleMultipleSnapshots}
+            />
+          </div>
+        </div>
         <hr />
 
-        {this.session.getUserRole() === 'ROLE_ROOT' && (
-          <div>
-            <label>{t('report.snapshot.Hubs')}</label>
-            <SelectWithTags
-              items={applications.filter(
-                item => !selectedApplications.includes(item)
-              )}
-              selectedItems={selectedApplications}
-              selectMethod={this.selectApplication}
-              deselectMethod={this.deselectApplication}
-            />
-            <hr />
-          </div>
-        )}
-
-        {(this.session.getUserRole() === 'ROLE_ROOT' ||
-          this.session.getUserRole() === 'ROLE_HUB_ADMIN') && (
-          <div>
-            <label>{t('report.snapshot.Organizations')}</label>
-            <SelectWithTags
-              items={organizations
-                .filter(
-                  item =>
-                    selectedApplications.length
-                      ? selectedApplications
-                          .map(app => app.name)
-                          .includes(item.application.name)
-                      : item
-                )
-                .filter(item => !selectedOrganizations.includes(item))}
-              selectedItems={selectedOrganizations}
-              selectMethod={this.selectOrganization}
-              deselectMethod={this.deselectOrganization}
-            />
-            <hr />
-          </div>
-        )}
-
-        <label>{t('report.snapshot.time-period.Title')}</label>
-        <TimePeriod
-          selectPeriod={this.selectPeriod}
-          toggleMultipleSnapshots={this.toggleMultipleSnapshots}
-        />
-        <hr />
 
         <label>{t('report.snapshot.Socioeconomic-Status')}</label>
         <Economics
