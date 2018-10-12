@@ -445,7 +445,10 @@ export default class FormContainer extends React.Component {
           </button>
           {!!this.state.recordsFound && (
           <span>{this.state.recordsFound} Records Found</span>
-        )}
+          )}
+          {this.state.recordsFound === 0 &&
+          <span>No Records Found</span>
+        }
         </div>
         {!!reportPreview.length && (
         <div>

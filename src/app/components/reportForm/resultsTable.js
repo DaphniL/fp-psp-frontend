@@ -14,8 +14,8 @@ export default class ResultsTable extends React.PureComponent {
         </thead>
         <tbody>
           {reportPreview.map(row => (
-            <tr>
-              <td><a href={`row.family.familyId}`}>{row.family.code}</a></td>
+            <tr key={row.snapshot_economic_id}>
+              <td><a href={`/#families/${row.family.familyId}`} target="_blank" rel="noopener noreferrer" >{row.family.code}</a></td>
               <td>{row.family.name}</td>
             </tr>
         ))}
