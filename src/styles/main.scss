@@ -1901,7 +1901,7 @@ img.current-language-flag {
 
 .report-form {
   label {
-    padding-top: 10px 0 0 0;
+    padding: 10px 0 0 0;
   }
 
   ul {
@@ -1967,4 +1967,13 @@ img.current-language-flag {
   float: right;
   right: 30px;
   position: absolute;
+}
+
+// Add striping and space for indicators list
+.report-form .row:nth-child(2n) {
+  background-color: #f0f0f0;
+}
+
+.report-form .row {
+  padding: 5px 0;
 }

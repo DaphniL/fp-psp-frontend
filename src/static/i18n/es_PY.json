@@ -422,6 +422,7 @@
       "include-multiple-snapshots": "Incluir multiples snapshots por familia",
       "Socioeconomic-Section": "Informacion Socioeconomica",
       "Indicators": "Indicadores",
+      "Filters": "Filtros",
       "match-filters": {
         "Title": "Filtrar por",
         "All": "Todos",

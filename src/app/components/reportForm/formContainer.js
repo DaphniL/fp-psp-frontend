@@ -416,35 +416,60 @@ export default class FormContainer extends React.Component {
         </div>
         <hr />
 
+        <label><h3>{t('report.snapshot.Filters')}</h3></label>
+        <div className="panel-group" id="accordion" role="tablist">
 
-        <label><h3>{t('report.snapshot.Socioeconomic-Section')}</h3></label>
-        <Economics
-          economics={economics}
-          selectedEconomics={selectedEconomics}
-          selectEconomic={this.selectEconomic}
-          deselectEconomic={this.deselectEconomic}
-          changeNumberEconomic={this.changeNumberEconomic}
-          selectFilter={this.selectFilter}
-          deselectFilter={this.deselectFilter}
-        />
-        <hr />
+          <div className="panel panel-default">
+            <div className="panel-heading" role="tab" id="headingOne">
+              <h4 className="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  {t('report.snapshot.Socioeconomic-Section')}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" className="panel-collapse collapse" role="tabpanel">
+              <div className="panel-body">
+                <Economics
+                  economics={economics}
+                  selectedEconomics={selectedEconomics}
+                  selectEconomic={this.selectEconomic}
+                  deselectEconomic={this.deselectEconomic}
+                  changeNumberEconomic={this.changeNumberEconomic}
+                  selectFilter={this.selectFilter}
+                  deselectFilter={this.deselectFilter}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="panel panel-default">
+            <div className="panel-heading" role="tab" id="headingTwo">
+              <h4 className="panel-title">
+                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                  {t('report.snapshot.Indicators')}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel">
+              <div className="panel-body">
+                {t('report.snapshot.match-filters.Title')}
+                <select value={match} onChange={this.changeMatch}>
+                  <option value="ALL">{t('report.snapshot.match-filters.All')}</option>
+                  <option value="ANY">{t('report.snapshot.match-filters.Any')}</option>
+                </select>
+                <hr />
+                <Indicators
+                  indicators={indicators}
+                  selectedIndicators={selectedIndicators}
+                  selectIndicator={this.selectIndicator}
+                  deselectIndicator={this.deselectIndicator}
+                  toggleSelectedColors={this.toggleSelectedColors}
+                />
+              </div>
+            </div>
+          </div>
 
-        <div>
-          <label><h3>{t('report.snapshot.match-filters.Title')}</h3></label>
-          <select value={match} onChange={this.changeMatch}>
-            <option value="ALL">{t('report.snapshot.match-filters.All')}</option>
-            <option value="ANY">{t('report.snapshot.match-filters.Any')}</option>
-          </select>
         </div>
-        <hr />
-        <label><h3>{t('report.snapshot.Indicators')}</h3></label>
-        <Indicators
-          indicators={indicators}
-          selectedIndicators={selectedIndicators}
-          selectIndicator={this.selectIndicator}
-          deselectIndicator={this.deselectIndicator}
-          toggleSelectedColors={this.toggleSelectedColors}
-        />
+
         <hr />
 
         <div className="row">
