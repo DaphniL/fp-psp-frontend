@@ -405,7 +405,7 @@ export default class FormContainer extends React.Component {
         <hr />
 
 
-        <label><h3>{t('report.snapshot.Socioeconomic-Status')}</h3></label>
+        <label><h3>{t('report.snapshot.Socioeconomic-Section')}</h3></label>
         <Economics
           economics={economics}
           selectedEconomics={selectedEconomics}
