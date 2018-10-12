@@ -5,6 +5,7 @@ import SelectWithTags from './selectWithTags';
 import Indicators from './Indicators';
 import Economics from './Economics';
 import TimePeriod from './timePeriod';
+import ResultsTable from './resultsTable'
 import env from '../../env';
 
 export default class FormContainer extends React.Component {
@@ -24,7 +25,8 @@ export default class FormContainer extends React.Component {
       selectedPeriod: [],
       multipleSnapshots: false,
       reportPreview: [],
-      match: 'ALL'
+      match: 'ALL',
+      recordsFound: null
     };
 
     this.selectSurvey = this.selectSurvey.bind(this);
@@ -257,7 +259,8 @@ export default class FormContainer extends React.Component {
       .then(response => response.json())
       .then(json => {
         this.setState({
-          reportPreview: json
+          reportPreview: json,
+          recordsFound: json.length
         });
       });
   }
@@ -432,25 +435,23 @@ export default class FormContainer extends React.Component {
         />
         <hr />
 
-        <button className="btn btn-primary" onClick={this.showPreview}>
-          {t('report.snapshot.buttons.Show-Preview')}
-        </button>
-        <div>
-          {!!reportPreview.length && (
-            <ul>
-              {reportPreview.map(snapshot => (
-                <li key={snapshot.snapshot_economic_id}>
-                  <a href={`/#families/${snapshot.family.familyId}`}>
-                    {snapshot.family.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="row">
+          <button className="btn btn-primary" onClick={this.showPreview}>
+            {t('report.snapshot.buttons.Show-Preview')}
+          </button>
+
+          <button className="btn btn-primary" onClick={this.downloadCSVReport}>
+            {t('report.snapshot.buttons.Download-Report')}
+          </button>
+          {!!this.state.recordsFound && (
+          <span>{this.state.recordsFound} Records Found</span>
+        )}
         </div>
-        <button className="btn btn-primary" onClick={this.downloadCSVReport}>
-          {t('report.snapshot.buttons.Download-Report')}
-        </button>
+        {!!reportPreview.length && (
+        <div>
+          <ResultsTable reportPreview={reportPreview} />
+        </div>
+          )}
       </div>
     );
   }

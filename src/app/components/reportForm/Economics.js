@@ -5,7 +5,7 @@ import { camelCasetoWords } from '../utils.js';
 export default props => (
   <div>
     {props.economics.map(item => (
-      <div key={item.name} className="row">
+      <div key={item.name} className="row report-economics">
         <div className="col-md-3">
           <label>
             <input
