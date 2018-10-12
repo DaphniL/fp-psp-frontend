@@ -102,7 +102,7 @@ export default class TimePeriod extends React.Component {
         </label>
         {this.state.showCustomTimeSelect && (
           <div className="report-custom-timeperiod">
-            <label>{t('report.snapshot.time-period.From-date')}</label>
+            <label>{t('report.snapshot.time-period.From-date')}&nbsp;</label>
             <Datetime
               dateFormat="MM/DD/YYYY"
               timeFormat={false}
@@ -112,7 +112,7 @@ export default class TimePeriod extends React.Component {
               }
               className="report-form-date"
             />
-            <label>{t('report.snapshot.time-period.To-date')}</label>
+            <label>&nbsp;{t('report.snapshot.time-period.To-date')}&nbsp;</label>
             <Datetime
               dateFormat="MM/DD/YYYY"
               timeFormat={false}
@@ -125,16 +125,6 @@ export default class TimePeriod extends React.Component {
           </div>
         )}
 
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            value="multipleSnapshots"
-            name="multipleSnapshots"
-            onChange={this.props.toggleMultipleSnapshots}
-          />
-          {t('report.snapshot.include-multiple-snapshots')}
-        </label>
       </div>
     );
   }

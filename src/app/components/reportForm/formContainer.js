@@ -393,6 +393,18 @@ export default class FormContainer extends React.Component {
               />
             </div>
           )}
+
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                value="multipleSnapshots"
+                name="multipleSnapshots"
+                onChange={this.props.toggleMultipleSnapshots}
+              />
+              {t('report.snapshot.include-multiple-snapshots')}
+            </label>
+
           </div>
           <div className="col-lg-5 col-lg-offset-1">
             <label><h3>{t('report.snapshot.time-period.Title')}</h3></label>
