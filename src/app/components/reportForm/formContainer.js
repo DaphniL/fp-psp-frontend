@@ -372,24 +372,27 @@ export default class FormContainer extends React.Component {
             </div>
           )}
 
-            <div>
-              <label><h3>{t('report.snapshot.Organizations')}</h3></label>
-              <SelectWithTags
-                items={organizations
-                  .filter(
-                    item =>
-                      selectedApplications.length
-                        ? selectedApplications
+            {(this.session.getUserRole() === 'ROLE_ROOT' ||
+              this.session.getUserRole() === 'ROLE_HUB_ADMIN' || this.session.getUserRole() === 'ROLE_APP_ADMIN' ) && (
+              <div>
+                <label><h3>{t('report.snapshot.Organizations')}</h3></label>
+                <SelectWithTags
+                  items={organizations
+                    .filter(
+                      item =>
+                        selectedApplications.length
+                          ? selectedApplications
                             .map(app => app.name)
                             .includes(item.application.name)
-                        : item
-                  )
-                  .filter(item => !selectedOrganizations.includes(item))}
-                selectedItems={selectedOrganizations}
-                selectMethod={this.selectOrganization}
-                deselectMethod={this.deselectOrganization}
-              />
-            </div>
+                          : item
+                    )
+                    .filter(item => !selectedOrganizations.includes(item))}
+                  selectedItems={selectedOrganizations}
+                  selectMethod={this.selectOrganization}
+                  deselectMethod={this.deselectOrganization}
+                />
+              </div>
+            )}
 
             <br />
             <label>
