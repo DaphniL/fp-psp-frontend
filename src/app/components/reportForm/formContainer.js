@@ -372,8 +372,6 @@ export default class FormContainer extends React.Component {
             </div>
           )}
 
-            {(this.session.getUserRole() === 'ROLE_ROOT' ||
-            this.session.getUserRole() === 'ROLE_HUB_ADMIN') && (
             <div>
               <label><h3>{t('report.snapshot.Organizations')}</h3></label>
               <SelectWithTags
@@ -392,7 +390,6 @@ export default class FormContainer extends React.Component {
                 deselectMethod={this.deselectOrganization}
               />
             </div>
-          )}
 
             <br />
             <label>
