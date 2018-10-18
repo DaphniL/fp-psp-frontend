@@ -44,6 +44,13 @@ select {
   color: #788c9a;
   border: 1px solid #efefef !important;
 }
+input[type='radio'],
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+label {
+  cursor: pointer;
+}
 button {
   background: #7cd071;
   border-radius: 2px;
@@ -1186,6 +1193,8 @@ div.fp-form-container {
 .btn-primary {
   background: #7cd071 !important;
   border-color: #7cd071;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 .btn-primary:hover {
   border-color: #7cd071;
@@ -1886,4 +1895,90 @@ img.current-language-flag {
 
 .color-picker-item--green:after {
   background: #409737;
+}
+
+//REPORTS
+
+.report-form {
+  label {
+    padding: 10px 0 0 0;
+  }
+
+  ul {
+    padding: 10px 5px;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+.report-taglist,
+.report-dropdown {
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: 1px solid #efefef;
+  padding: 5px 10px;
+}
+
+.report-taglist {
+  height: 40px;
+  line-height: 25px;
+  display: flex;
+}
+
+.report-dropdown {
+  margin-top: -1px;
+  width: 100%;
+  color: #788c9a;
+}
+
+.report-tag {
+  background-color: rgba(204, 204, 204, 1);
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 2px 10px;
+  font-size: 0.8em;
+
+  @media screen and (max-width: 480px) {
+    font-size: 0.6em;
+  }
+}
+
+.report-tag-deselect {
+  color: #333333;
+  margin-left: 10px;
+}
+
+.report-color-picker {
+  margin: 0px;
+}
+.report-custom-timeperiod {
+  display: flex;
+}
+.report-form-date {
+  input {
+    width: 150px;
+    height: 30px;
+    margin: 0;
+    font-size: 15px !important;
+  }
+}
+// add arrow caret for multiselect
+.report-taglist::after {
+  content: '▼';
+  font-size: 0.7em;
+  float: right;
+  right: 30px;
+  position: absolute;
+}
+
+// Add striping and space for indicators list
+.report-form .row:nth-child(2n) {
+  background-color: #f0f0f0;
+}
+
+.report-form .row {
+  padding: 5px 0;
 }
