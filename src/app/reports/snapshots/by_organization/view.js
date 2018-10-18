@@ -7,7 +7,7 @@ import CollectionView from './list/view';
 import OrganizationModel from '../../../organizations/model';
 import utils from '../../../utils';
 import FlashesService from '../../../flashes/service';
-import storage from '../../storage';
+import storage from '../../../organizations/storage';
 import env from '../../../env';
 
 export default Mn.View.extend({
