@@ -17,7 +17,6 @@ export default Mn.Application.extend({
   region: '#main',
 
   initialize() {
-    
 
     this.sessionMgr = sessionMgr;
     let phrases = this.sessionMgr.getSession().get('messages')
