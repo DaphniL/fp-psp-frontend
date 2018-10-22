@@ -16,7 +16,7 @@ import I18nModel from '../i18n/model';
 export default Mn.Application.extend({
   region: '#main',
 
-  initialize() {
+  initialize() { 
 
     this.sessionMgr = sessionMgr;
     let phrases = this.sessionMgr.getSession().get('messages')
