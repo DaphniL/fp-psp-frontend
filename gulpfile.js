@@ -6,7 +6,7 @@ const $ = require('gulp-load-plugins')({
 });
 const jetpack = require('fs-jetpack');
 
-const environment = $.util.env.type || 'development';
+const environment = $.util.env.type || $.util.env.envType || 'development';
 const region = $.util.env.region || 'US';
 const isProduction = environment === 'production';
 const webpackConfig = require('./webpack/gulp.config.js')[environment];
