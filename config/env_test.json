@@ -1,6 +1,7 @@
 {
-  "API": "https://jsonplaceholder.typicode.com",
+  "API": "https://povstop-backend-dev.herokuapp.com/api/v1",
   "API_AUTH": "http://127.0.0.1:8080/oauth",
+  "API_PUBLIC": "http://127.0.0.1:8080",
   "authenticationEnabled": false,
-  "platform": "TESTING"
+  "platform": "TEST"
 }

@@ -129,6 +129,7 @@
     "build": "gulp build --type production",
     "build:UK": "gulp build --type production --region UK",
     "build:US-DEMO": "gulp build --type production --region US-DEMO",
+    "build:HEROKU": "gulp build --type production --region HEROKU",
     "fix:config": "prettier --ignore-path .gitignore --write \"**/*.json\"",
     "fix:docs": "prettier --ignore-path .gitignore --write \"**/*.md\"",
     "fix:script": "npm run lint -- --fix",

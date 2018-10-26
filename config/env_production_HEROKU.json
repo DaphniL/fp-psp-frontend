@@ -1,0 +1,8 @@
+{
+  "API": "https://povstop-backend-dev.herokuapp.com/api/v1",
+  "API_AUTH": "https://povstop-backend-dev.herokuapp.com/oauth",
+  "authenticationEnabled": false,
+  "GOOGLEKEY": "AIzaSyAOJGqHfbWY_u7XhRnLi7EbVjdK-osBgAM",
+  "API_PUBLIC": "https://povstop-backend-dev.herokuapp.com",
+  "platform": "TESTING"
+}
