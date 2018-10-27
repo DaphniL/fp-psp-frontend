@@ -116,7 +116,7 @@ The content of the files must follow the following format:
 The parameters are obtained with `%{nameOfParameter}`.
 
 
-#### How can I internationalize a message, word, etc. ?
+#### How can I internationalize a message, word, etc.?
 
 For the translation the helper "t" was created, which uses Polyglot together with the jsons to carry out the translation.
 
