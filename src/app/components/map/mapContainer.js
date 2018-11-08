@@ -174,7 +174,7 @@ class MapContainer extends Component {
           .map(organization => organization.family.organization.name)
           .filter((organization, i, self) => self.indexOf(organization) === i),
         itemToSelect: 'selectedOrganization',
-        access: ['ROLE_ROOT', 'ROLE_HUB_ADMIN']
+        access: ['ROLE_ROOT', 'ROLE_HUB_ADMIN','ROLE_APP_ADMIN']
       },
       {
         label: 'User',
