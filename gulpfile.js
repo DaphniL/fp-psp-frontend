@@ -95,6 +95,11 @@ gulp.task('environment', () => {
   const projectDir = jetpack;
   const commonDir = jetpack.cwd(`./${src}common`);
   let configFile = `./config/env_${environment}.json`;
+  console.log(isProduction)
+  console.log(region)
+  if(!isProduction && region==="US-DEMO"){ // use povstop demo server as dev backend
+    configFile=`./config/env_${environment}_${region}.json`;
+  }
   if (isProduction) {
     configFile = `./config/env_${environment}_${region}.json`;
   }

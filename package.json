@@ -126,6 +126,7 @@
   },
   "scripts": {
     "start": "gulp",
+    "start:DEV-DEMO": "gulp --region US-DEMO",
     "build": "gulp build --type production",
     "build:UK": "gulp build --type production --region UK",
     "build:US-DEMO": "gulp build --type production --region US-DEMO",
