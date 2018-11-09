@@ -8,7 +8,7 @@
 
 ## Things you need
 
-The Poverty Stoplight project has multiple repositories that are interelated. This is the Webapp Frontend Repo, and it needs a running backend to be functional and testable. You can check the [FP-PSP-Server](https://github.com/funda...) repository and its [Setup Guide](https://github.com/funda...) to get the backend up and running on your machine.
+The Poverty Stoplight project has multiple repositories that are interelated. This is the Webapp Frontend Repo, and it needs a running backend to be functional and testable. You can check the [FP-PSP-Server](https://github.com/FundacionParaguaya/FP-PSP-SERVER.) repository and its [Setup Guide](https://github.com/FundacionParaguaya/FP-PSP-SERVER/blob/master/docs/RUN.md) to get the backend up and running on your machine.
 
 ### Using our development backend
 If you do not want to run your own backend and just want to do the fun frontend work, you can use our dev backend hosted on Heroku at this [link](https://povstop-backend-dev.herokuapp.com/) :)
@@ -40,7 +40,7 @@ npm install -g gulp
 # With your local dev server
 npm start
 
-# With our Heroku hosted dev server
+# With our demo dev server
 npm run start:DEV-DEMO
 ```
 
