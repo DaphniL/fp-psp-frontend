@@ -8,10 +8,10 @@
 
 ## Things you need
 
-The Poverty Stoplight project has multiple repositories that are interelated. This is the Webapp Frontend Repo, and it needs a running backend to be functional and testable. You can check the [FP-PSP-Server](https://github.com/FundacionParaguaya/FP-PSP-SERVER.) repository and its [Setup Guide](https://github.com/FundacionParaguaya/FP-PSP-SERVER/blob/master/docs/RUN.md) to get the backend up and running on your machine.
+The Poverty Stoplight project has multiple repositories that are interrelated. This is the Webapp Frontend Repo, and it needs a running backend to be functional and testable. You can check the [FP-PSP-Server](https://github.com/FundacionParaguaya/FP-PSP-SERVER.) repository and its [Setup Guide](https://github.com/FundacionParaguaya/FP-PSP-SERVER/blob/master/docs/RUN.md) to get the backend up and running on your machine.
 
 ### Using our development backend
-If you do not want to run your own backend and just want to do the fun frontend work, you can use our dev backend hosted on Heroku at this [link](https://povstop-backend-dev.herokuapp.com/) :)
+If you do not want to run your own backend and just want to do the fun frontend work, you can use our demo server as your dev backend [link](https://povstop-backend-dev.herokuapp.com/) :)
 
 Just note that this runs our current `master` branch and and the data mimics the demo.povertystoplight.org server. However, this means that it might not have all the endpoints that are in development branches at the moment.
 
