@@ -2,7 +2,7 @@
 
 
 **Working on your first Pull Request?** You can learn how from this _free_ series
-[How to Contribute to an Open Source Project on GitHub][egghead]
+[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 # Setting Up
 
@@ -37,7 +37,7 @@ npm install
 # you might need sudo to get this to work
 npm install -g gulp
 ```
-4. Start the server
+4. Start the dev server
 ```
 # With your local dev server
 npm start
@@ -110,4 +110,4 @@ issue trackers, chatrooms, and mailing lists.
 
 # Resources
 
-Here are some resources to get started with Developemnt
+Here are some resources to get started with development
