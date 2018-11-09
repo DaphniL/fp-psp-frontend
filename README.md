@@ -6,6 +6,10 @@ Fundación Paraguaya (FP from now on) has developed a methodology called “Pove
 
 Through a visual survey that shows photographs, families self-assess their level of poverty with 50 indicators. These indicators are in turn grouped into 6 different dimensions of poverty.
 
+## Contributing
+
+Check our [Contribution Guide](CONTRIBUTING.md) for instructions on how to contribute to the project.
+
 ## Poverty Stoplight Frontend
 
 Single Page Application working as a web client for [FP-PSP-SERVER](https://github.com/FundacionParaguaya/FP-PSP-SERVER).
@@ -95,7 +99,7 @@ All messages supported by internationalization are stored in the `/src/static/i1
 
 Files for each locale must be of type json and be named `XX_YY.json`, where `XX` is the language code and `YY` is the country code. For example, `es_PY.json` for Paraguay.
 
-The keys for the values that will be localized have to be the same in every file, with values appropriate to the language they correspond to. 
+The keys for the values that will be localized have to be the same in every file, with values appropriate to the language they correspond to.
 
 The content of the files must follow the following format:
 
