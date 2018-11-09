@@ -55,9 +55,7 @@ class Map extends React.Component {
                     {showInfoIndex === i && (
                       <InfoWindow onCloseClick={this.toggleInfo}>
                         <div>
-                          <a href={`/#families/${marker.householdID}`}>
-                            <h5>{marker.household}</h5>
-                          </a>
+                          <h5>{marker.household}</h5>
                           <div>{moment(marker.date).format('DD/MM/YYYY')}</div>
                         </div>
                       </InfoWindow>
