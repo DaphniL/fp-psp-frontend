@@ -46,6 +46,21 @@ npm start
 npm run start:DEV-DEMO
 ```
 
+## Credentials
+
+If you are using our dev server as the backned, here are the credentials you need:
+
+### Hub
+```
+user: hub
+pass: hub
+```
+
+### Organization
+```
+user: partner
+pass: partner
+```
 
 # The Contribution Process
 
