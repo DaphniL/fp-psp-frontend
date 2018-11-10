@@ -374,6 +374,7 @@ export default class FormContainer extends React.Component {
 
             {(this.session.getUserRole() === 'ROLE_ROOT' ||
               this.session.getUserRole() === 'ROLE_HUB_ADMIN' || this.session.getUserRole() === 'ROLE_APP_ADMIN' ) && (
+
               <div>
                 <label><h3>{t('report.snapshot.Organizations')}</h3></label>
                 <SelectWithTags

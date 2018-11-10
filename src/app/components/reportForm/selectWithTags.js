@@ -12,6 +12,7 @@ export default class SelectWithTags extends React.Component {
   }
   render() {
     const { name, items, selectedItems, selectMethod, deselectMethod } = this.props
+    items.forEach((item)=>{selectMethod(item.name)}) // autofill the multi-select field on page load
     return (
       <div>
         <div className="report-taglist" onClick={this.toggleDropdown}>
